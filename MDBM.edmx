@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="product_DO_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="ID_CUSTOMER" />
+          </Key>
+          <Property Name="ID_CUSTOMER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="varchar" MaxLength="25" />
+          <Property Name="LAST_NAME" Type="varchar" MaxLength="25" />
+          <Property Name="TEL" Type="nchar" MaxLength="15" />
+          <Property Name="EMAI" Type="varchar" MaxLength="25" />
+          <Property Name="Debit" Type="float" />
+          <Property Name="IMAGE_CUSTOMER" Type="image" />
+        </EntityType>
+        <EntityType Name="Customers_Debt">
+          <Key>
+            <PropertyRef Name="ID_CUSTOMER" />
+          </Key>
+          <Property Name="ID_CUSTOMER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Supplier" Type="int" />
+          <Property Name="SupplierName" Type="nvarchar(max)" />
+          <Property Name="FullName" Type="nvarchar(max)" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Debit" Type="float" />
+          <Property Name="DateT" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Debit_supplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Supplier" Type="int" />
+          <Property Name="SupplierName" Type="nvarchar(max)" />
+          <Property Name="FullName" Type="nvarchar(max)" />
+          <Property Name="Debt" Type="float" />
+          <Property Name="DateT" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PaymentCustomer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Supplier" Type="int" Nullable="false" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="50" />
+          <Property Name="Payment" Type="float" />
+          <Property Name="DateT" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PaymentSupplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Supplier" Type="int" />
+          <Property Name="SupplierName" Type="nvarchar(max)" />
+          <Property Name="Payment" Type="float" />
+          <Property Name="DateT" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TB_SUPLIERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="nchar" MaxLength="10" />
+          <Property Name="Email" Type="nchar" MaxLength="10" />
+          <Property Name="Debit" Type="float" />
+          <Property Name="IMAGE_SUPPLIER" Type="image" />
+        </EntityType>
+        <EntityType Name="TB_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fullname" Type="varchar(max)" />
+          <Property Name="Username" Type="varchar(max)" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="Role" Type="varchar" MaxLength="50" />
+          <Property Name="DateT" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TBL_USER">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PWD" Type="varchar" MaxLength="50" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="PURCHASE_MAN" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Customers_Debt_CUSTOMERS">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Customers_Debt" Type="Self.Customers_Debt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="ID_CUSTOMER" />
+            </Principal>
+            <Dependent Role="Customers_Debt">
+              <PropertyRef Name="ID_Supplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Debit_supplier_TB_SUPLIERS">
+          <End Role="TB_SUPLIERS" Type="Self.TB_SUPLIERS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Debit_supplier" Type="Self.Debit_supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SUPLIERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Debit_supplier">
+              <PropertyRef Name="ID_Supplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentCustomer_CUSTOMERS">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PaymentCustomer" Type="Self.PaymentCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="ID_CUSTOMER" />
+            </Principal>
+            <Dependent Role="PaymentCustomer">
+              <PropertyRef Name="ID_Supplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentSupplier_TB_SUPLIERS">
+          <End Role="TB_SUPLIERS" Type="Self.TB_SUPLIERS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PaymentSupplier" Type="Self.PaymentSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SUPLIERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PaymentSupplier">
+              <PropertyRef Name="ID_Supplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="product_DO_ModelStoreContainer">
+          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers_Debt" EntityType="Self.Customers_Debt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Debit_supplier" EntityType="Self.Debit_supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentCustomer" EntityType="Self.PaymentCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentSupplier" EntityType="Self.PaymentSupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_SUPLIERS" EntityType="Self.TB_SUPLIERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Users" EntityType="Self.TB_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_USER" EntityType="Self.TBL_USER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Customers_Debt_CUSTOMERS" Association="Self.FK_Customers_Debt_CUSTOMERS">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="Customers_Debt" EntitySet="Customers_Debt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Debit_supplier_TB_SUPLIERS" Association="Self.FK_Debit_supplier_TB_SUPLIERS">
+            <End Role="TB_SUPLIERS" EntitySet="TB_SUPLIERS" />
+            <End Role="Debit_supplier" EntitySet="Debit_supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentCustomer_CUSTOMERS" Association="Self.FK_PaymentCustomer_CUSTOMERS">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="PaymentCustomer" EntitySet="PaymentCustomer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentSupplier_TB_SUPLIERS" Association="Self.FK_PaymentSupplier_TB_SUPLIERS">
+            <End Role="TB_SUPLIERS" EntitySet="TB_SUPLIERS" />
+            <End Role="PaymentSupplier" EntitySet="PaymentSupplier" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="product_DO_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="ID_CUSTOMER" />
+          </Key>
+          <Property Name="ID_CUSTOMER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TEL" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="EMAI" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="IMAGE_CUSTOMER" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Customers_Debt" Relationship="Self.FK_Customers_Debt_CUSTOMERS" FromRole="CUSTOMERS" ToRole="Customers_Debt" />
+          <NavigationProperty Name="PaymentCustomer" Relationship="Self.FK_PaymentCustomer_CUSTOMERS" FromRole="CUSTOMERS" ToRole="PaymentCustomer" />
+        </EntityType>
+        <EntityType Name="Customers_Debt">
+          <Key>
+            <PropertyRef Name="ID_CUSTOMER" />
+          </Key>
+          <Property Name="ID_CUSTOMER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Supplier" Type="Int32" />
+          <Property Name="SupplierName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="DateT" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CUSTOMERS" Relationship="Self.FK_Customers_Debt_CUSTOMERS" FromRole="Customers_Debt" ToRole="CUSTOMERS" />
+        </EntityType>
+        <EntityType Name="Debit_supplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Supplier" Type="Int32" />
+          <Property Name="SupplierName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Debt" Type="Double" />
+          <Property Name="DateT" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TB_SUPLIERS" Relationship="Self.FK_Debit_supplier_TB_SUPLIERS" FromRole="Debit_supplier" ToRole="TB_SUPLIERS" />
+        </EntityType>
+        <EntityType Name="PaymentCustomer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Supplier" Type="Int32" Nullable="false" />
+          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Payment" Type="Double" />
+          <Property Name="DateT" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CUSTOMERS" Relationship="Self.FK_PaymentCustomer_CUSTOMERS" FromRole="PaymentCustomer" ToRole="CUSTOMERS" />
+        </EntityType>
+        <EntityType Name="PaymentSupplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Supplier" Type="Int32" />
+          <Property Name="SupplierName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Payment" Type="Double" />
+          <Property Name="DateT" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TB_SUPLIERS" Relationship="Self.FK_PaymentSupplier_TB_SUPLIERS" FromRole="PaymentSupplier" ToRole="TB_SUPLIERS" />
+        </EntityType>
+        <EntityType Name="TB_SUPLIERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Debit" Type="Double" />
+          <Property Name="IMAGE_SUPPLIER" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Debit_supplier" Relationship="Self.FK_Debit_supplier_TB_SUPLIERS" FromRole="TB_SUPLIERS" ToRole="Debit_supplier" />
+          <NavigationProperty Name="PaymentSupplier" Relationship="Self.FK_PaymentSupplier_TB_SUPLIERS" FromRole="TB_SUPLIERS" ToRole="PaymentSupplier" />
+        </EntityType>
+        <EntityType Name="TBL_USER">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PWD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PURCHASE_MAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Customers_Debt_CUSTOMERS">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Customers_Debt" Type="Self.Customers_Debt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="ID_CUSTOMER" />
+            </Principal>
+            <Dependent Role="Customers_Debt">
+              <PropertyRef Name="ID_Supplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentCustomer_CUSTOMERS">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PaymentCustomer" Type="Self.PaymentCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="ID_CUSTOMER" />
+            </Principal>
+            <Dependent Role="PaymentCustomer">
+              <PropertyRef Name="ID_Supplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Debit_supplier_TB_SUPLIERS">
+          <End Role="TB_SUPLIERS" Type="Self.TB_SUPLIERS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Debit_supplier" Type="Self.Debit_supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SUPLIERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Debit_supplier">
+              <PropertyRef Name="ID_Supplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentSupplier_TB_SUPLIERS">
+          <End Role="TB_SUPLIERS" Type="Self.TB_SUPLIERS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PaymentSupplier" Type="Self.PaymentSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SUPLIERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PaymentSupplier">
+              <PropertyRef Name="ID_Supplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="product_DO_Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" />
+          <EntitySet Name="Customers_Debt" EntityType="Self.Customers_Debt" />
+          <EntitySet Name="Debit_supplier" EntityType="Self.Debit_supplier" />
+          <EntitySet Name="PaymentCustomer" EntityType="Self.PaymentCustomer" />
+          <EntitySet Name="PaymentSupplier" EntityType="Self.PaymentSupplier" />
+          <EntitySet Name="TB_SUPLIERS" EntityType="Self.TB_SUPLIERS" />
+          <EntitySet Name="TBL_USER" EntityType="Self.TBL_USER" />
+          <AssociationSet Name="FK_Customers_Debt_CUSTOMERS" Association="Self.FK_Customers_Debt_CUSTOMERS">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="Customers_Debt" EntitySet="Customers_Debt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentCustomer_CUSTOMERS" Association="Self.FK_PaymentCustomer_CUSTOMERS">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="PaymentCustomer" EntitySet="PaymentCustomer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Debit_supplier_TB_SUPLIERS" Association="Self.FK_Debit_supplier_TB_SUPLIERS">
+            <End Role="TB_SUPLIERS" EntitySet="TB_SUPLIERS" />
+            <End Role="Debit_supplier" EntitySet="Debit_supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentSupplier_TB_SUPLIERS" Association="Self.FK_PaymentSupplier_TB_SUPLIERS">
+            <End Role="TB_SUPLIERS" EntitySet="TB_SUPLIERS" />
+            <End Role="PaymentSupplier" EntitySet="PaymentSupplier" />
+          </AssociationSet>
+          <EntitySet Name="TB_Users" EntityType="product_DO_Model.TB_Users" />
+        </EntityContainer>
+        <EntityType Name="TB_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateT" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="product_DO_ModelStoreContainer" CdmEntityContainer="product_DO_Entities2">
+          <EntitySetMapping Name="CUSTOMERS">
+            <EntityTypeMapping TypeName="product_DO_Model.CUSTOMERS">
+              <MappingFragment StoreEntitySet="CUSTOMERS">
+                <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="TEL" ColumnName="TEL" />
+                <ScalarProperty Name="EMAI" ColumnName="EMAI" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="IMAGE_CUSTOMER" ColumnName="IMAGE_CUSTOMER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers_Debt">
+            <EntityTypeMapping TypeName="product_DO_Model.Customers_Debt">
+              <MappingFragment StoreEntitySet="Customers_Debt">
+                <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
+                <ScalarProperty Name="ID_Supplier" ColumnName="ID_Supplier" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="DateT" ColumnName="DateT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Debit_supplier">
+            <EntityTypeMapping TypeName="product_DO_Model.Debit_supplier">
+              <MappingFragment StoreEntitySet="Debit_supplier">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Supplier" ColumnName="ID_Supplier" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Debt" ColumnName="Debt" />
+                <ScalarProperty Name="DateT" ColumnName="DateT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentCustomer">
+            <EntityTypeMapping TypeName="product_DO_Model.PaymentCustomer">
+              <MappingFragment StoreEntitySet="PaymentCustomer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Supplier" ColumnName="ID_Supplier" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="DateT" ColumnName="DateT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentSupplier">
+            <EntityTypeMapping TypeName="product_DO_Model.PaymentSupplier">
+              <MappingFragment StoreEntitySet="PaymentSupplier">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Supplier" ColumnName="ID_Supplier" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="DateT" ColumnName="DateT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_SUPLIERS">
+            <EntityTypeMapping TypeName="product_DO_Model.TB_SUPLIERS">
+              <MappingFragment StoreEntitySet="TB_SUPLIERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="IMAGE_SUPPLIER" ColumnName="IMAGE_SUPPLIER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_USER">
+            <EntityTypeMapping TypeName="product_DO_Model.TBL_USER">
+              <MappingFragment StoreEntitySet="TBL_USER">
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="PWD" ColumnName="PWD" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="PURCHASE_MAN" ColumnName="PURCHASE_MAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Users">
+            <EntityTypeMapping TypeName="product_DO_Model.TB_Users">
+              <MappingFragment StoreEntitySet="TB_Users">
+                <ScalarProperty Name="DateT" ColumnName="DateT" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

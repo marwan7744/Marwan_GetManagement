@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="44a964b7a8de46c4b0cecc6d3979190e" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="product_DO_Model.CUSTOMERS" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="product_DO_Model.Debit_supplier" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="product_DO_Model.PaymentSupplier" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="product_DO_Model.TB_SUPLIERS" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="product_DO_Model.FK_Debit_supplier_TB_SUPLIERS" ManuallyRouted="false" />
+        <AssociationConnector Association="product_DO_Model.FK_PaymentSupplier_TB_SUPLIERS" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="product_DO_Model.Customers_Debt" Width="1.5" PointX="8" PointY="0.75" />
+        <AssociationConnector Association="product_DO_Model.FK_Customers_Debt_CUSTOMERS" />
+        <EntityTypeShape EntityType="product_DO_Model.PaymentCustomer" Width="1.5" PointX="8" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="product_DO_Model.FK_PaymentCustomer_CUSTOMERS" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

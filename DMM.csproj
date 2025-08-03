@@ -1,0 +1,453 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F01CA5EC-3C66-4915-8815-A4E22C92B4E4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DMM</RootNamespace>
+    <AssemblyName>DMM</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>605508_bag_buy_cart_item_sale_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>BB790C122368EEF8E8A8A5802E8411258BDCA312</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>DMM_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v23.1" />
+    <Reference Include="DevExpress.Charts.v23.1.Core, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.Desktop.v23.1" />
+    <Reference Include="DevExpress.Data.v23.1" />
+    <Reference Include="DevExpress.DataAccess.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v23.1.Core, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v23.1.Core, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v23.1.Core, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v23.1.Core" />
+    <Reference Include="DevExpress.RichEdit.v23.1.Core, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v23.1.Export, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v23.1" />
+    <Reference Include="DevExpress.Utils.v23.1.UI, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v23.1" />
+    <Reference Include="DevExpress.Sparkline.v23.1.Core" />
+    <Reference Include="DevExpress.XtraCharts.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v23.1.UI, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v23.1.Wizard, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v23.1" />
+    <Reference Include="DevExpress.Drawing.v23.1" />
+    <Reference Include="DevExpress.XtraGauges.v23.1.Core, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v23.1.Extensions, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddPages\FRM_USERLOGIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPages\FRM_USERLOGIN.Designer.cs">
+      <DependentUpon>FRM_USERLOGIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPages\Add_Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPages\Add_Users.Designer.cs">
+      <DependentUpon>Add_Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPages\Add_DebitCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPages\Add_DebitCustomer.Designer.cs">
+      <DependentUpon>Add_DebitCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPages\Add_DebitSuppliers .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPages\Add_DebitSuppliers .Designer.cs">
+      <DependentUpon>Add_DebitSuppliers .cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPages\Add_Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPages\Add_Customer.Designer.cs">
+      <DependentUpon>Add_Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPages\Log_Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPages\Log_Customer.Designer.cs">
+      <DependentUpon>Log_Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPages\Log_Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPages\Log_Supplier.Designer.cs">
+      <DependentUpon>Log_Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BL\CLS_LOGIN.cs" />
+    <Compile Include="BL\DataAccessLayer.cs" />
+    <Compile Include="BL\UPDATE.cs" />
+    <Compile Include="CUSTOMERS.cs">
+      <DependentUpon>MDBM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customers_Debt.cs">
+      <DependentUpon>MDBM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Debit_supplier.cs">
+      <DependentUpon>MDBM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DMM\AddPages.cs" />
+    <Compile Include="DMM\Log_Supplier.cs" />
+    <Compile Include="FRM_Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_Settings.Designer.cs">
+      <DependentUpon>FRM_Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_Start.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_Start.Designer.cs">
+      <DependentUpon>FRM_Start.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MAIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MAIN.Designer.cs">
+      <DependentUpon>MAIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPages\Add_Suppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPages\Add_Suppliers.Designer.cs">
+      <DependentUpon>Add_Suppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDBM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MDBM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MDBM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MDBM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MDBM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MDBM.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\AnaylisisPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\AnaylisisPage.Designer.cs">
+      <DependentUpon>AnaylisisPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Page_Users.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\Page_Users.Designer.cs">
+      <DependentUpon>Page_Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Page_Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\Page_Home.Designer.cs">
+      <DependentUpon>Page_Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Page_Customer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\Page_Customer.Designer.cs">
+      <DependentUpon>Page_Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\Page_SuppLiers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\Page_SuppLiers.Designer.cs">
+      <DependentUpon>Page_SuppLiers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Page\ReportPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Page\ReportPage.Designer.cs">
+      <DependentUpon>ReportPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentCustomer.cs">
+      <DependentUpon>MDBM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentSupplier.cs">
+      <DependentUpon>MDBM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\CustomerReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\CustomerReport.Designer.cs">
+      <DependentUpon>CustomerReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\SupplierReport1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\SupplierReport1.Designer.cs">
+      <DependentUpon>SupplierReport1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\FRM_RETURN_INVOCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\FRM_RETURN_INVOCE.Designer.cs">
+      <DependentUpon>FRM_RETURN_INVOCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_USER.cs">
+      <DependentUpon>MDBM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_SUPLIERS.cs">
+      <DependentUpon>MDBM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_Users.cs">
+      <DependentUpon>MDBM.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddPages\FRM_USERLOGIN.resx">
+      <DependentUpon>FRM_USERLOGIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPages\Add_Users.resx">
+      <DependentUpon>Add_Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPages\Add_DebitCustomer.resx">
+      <DependentUpon>Add_DebitCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPages\Add_DebitSuppliers .resx">
+      <DependentUpon>Add_DebitSuppliers .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPages\Add_Customer.resx">
+      <DependentUpon>Add_Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPages\Log_Customer.resx">
+      <DependentUpon>Log_Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPages\Log_Supplier.resx">
+      <DependentUpon>Log_Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_Settings.resx">
+      <DependentUpon>FRM_Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_Start.resx">
+      <DependentUpon>FRM_Start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MAIN.resx">
+      <DependentUpon>MAIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPages\Add_Suppliers.resx">
+      <DependentUpon>Add_Suppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\AnaylisisPage.resx">
+      <DependentUpon>AnaylisisPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\Page_Users.resx">
+      <DependentUpon>Page_Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\Page_Home.resx">
+      <DependentUpon>Page_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\Page_Customer.resx">
+      <DependentUpon>Page_Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\Page_SuppLiers.resx">
+      <DependentUpon>Page_SuppLiers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Page\ReportPage.resx">
+      <DependentUpon>ReportPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Report\CustomerReport.resx">
+      <DependentUpon>CustomerReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\SupplierReport1.resx">
+      <DependentUpon>SupplierReport1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\FRM_RETURN_INVOCE.resx">
+      <DependentUpon>FRM_RETURN_INVOCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <EntityDeploy Include="MDBM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MDBM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DMM_TemporaryKey.pfx" />
+    <None Include="MDBM.edmx.diagram">
+      <DependentUpon>MDBM.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\00015DarkWallpaper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="605508_bag_buy_cart_item_sale_icon.ico" />
+    <Content Include="6971188_debt_debate_student_icon.ico" />
+    <Content Include="MDBM.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MDBM.edmx</DependentUpon>
+      <LastGenOutput>MDBM.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MDBM.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MDBM.edmx</DependentUpon>
+      <LastGenOutput>MDBM.cs</LastGenOutput>
+    </Content>
+    <Content Include="product_DO_.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="product_DO__log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>product_DO_.mdf</DependentUpon>
+    </Content>
+    <None Include="Resources\icons8_Cardboard_Box_48px1.png" />
+    <None Include="Resources\icons8_Ledger_50px1.png" />
+    <None Include="Resources\icons8_Mortgage_50px1.png" />
+    <None Include="Resources\icons8_Rent_48px1.png" />
+    <None Include="Resources\icons8_Small_Business_48px1.png" />
+    <None Include="Resources\icons8_Ledger_50px.png" />
+    <None Include="Resources\icons8_Cardboard_Box_48px.png" />
+    <None Include="Resources\icons8_Rent_48px.png" />
+    <None Include="Resources\icons8_Mortgage_50px.png" />
+    <None Include="Resources\icons8_Small_Business_48px.png" />
+    <None Include="Resources\icons8_Procurement_48px.png" />
+    <None Include="Resources\icons8_Paper_Money_48px.png" />
+    <None Include="Resources\icons8_Budget_48px.png" />
+    <None Include="Resources\icons8_Shutdown_48px_1.png" />
+    <None Include="Resources\Screenshot_٢٠٢٥٠٤٢٨-٢٣٤٨١٨_WhatsApp.jpg" />
+    <None Include="Resources\icons8_Warehouse_48px.png" />
+    <None Include="Resources\icons8_User_Group_48px.png" />
+    <None Include="Resources\icons8_Settings_32px.png" />
+    <None Include="Resources\icons8_User_48px.png" />
+    <None Include="Resources\icons8_User_50px.png" />
+    <None Include="Resources\icons8_Lock_50px_1.png" />
+    <None Include="Resources\icons8_Collaborator_Male_50px_1.png" />
+    <None Include="Resources\document-writer.png" />
+    <None Include="Resources\00006DarkWallpaper2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MANGEMENT\MANGEMENT\MANGEMENT.csproj">
+      <Project>{51cc4d91-db36-42c0-b7ed-fd123117e1d1}</Project>
+      <Name>MANGEMENT</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
